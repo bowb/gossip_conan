@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.28)
+cmake_minimum_required(VERSION 3.20)
 project(test_package LANGUAGES C CXX)
 
 find_package(glog 0.7.0 REQUIRED)
