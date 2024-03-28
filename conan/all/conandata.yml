@@ -1,5 +1,5 @@
 sources:
   "1.0.5":
     url:
-      - https://github.com/bowb/gossip/archive/refs/heads/develop.zip
-    sha256: "8f9c723545a4a4b3130a8eaed8e15b0afdae8b44c1e07d298566bf476b661001"
+      - https://github.com/bowb/gossip/archive/refs/tags/1.0.5.tar.gz
+    sha256: "f10a8d51a4d130d84454e7fa4262ae1905217117f2b1091bd8164ce030a2e08e"
