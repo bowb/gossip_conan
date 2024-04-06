@@ -4,8 +4,8 @@
 
 int main (void)
 {
-    swim::SwimServer server(9999);
+    swim::SwimServer server("localhost",9999);
     auto srv = swim::MakeServer("localhost", server.port());
-    swim::SwimClient client(*srv);
+    swim::SwimClient client("localhost", 0, *srv);
     return 0;
 }
