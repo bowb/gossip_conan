@@ -22,6 +22,7 @@ class GossipConan(ConanFile):
   options = {
       "shared": [True, False],
       "fPIC": [True, False],
+      "unit_tests": [True, False],
   }
 
   default_options = {
@@ -34,7 +35,8 @@ class GossipConan(ConanFile):
       # used only in testing
       "gtest:shared": True,
       "libuv:shared": True,
-      "http_parser:shared": True
+      "http_parser:shared": True,        
+      "unit_tests": False,
   }
   
   def build_requirements(self):
@@ -72,6 +74,9 @@ class GossipConan(ConanFile):
       deps = CMakeDeps(self)
       deps.generate()
 
+  def package_id(self):
+    del self.info.options.unit_tests
+
   def package(self):
     copy(self, "LICENSE-2.0.txt", src=self.source_folder, dst=os.path.join(self.package_folder, "licenses"))
     cmake = CMake(self)
@@ -98,7 +103,7 @@ class GossipConan(ConanFile):
     cmake.configure()
     cmake.build()
     
-    if not tools.build.cross_building(self):
+    if not tools.build.cross_building(self) and self.options.unit_tests:
       cmake.test()
 
   @property
